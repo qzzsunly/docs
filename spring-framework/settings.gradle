@@ -1,0 +1,7 @@
+rootProject.name = "spring"
+
+
+
+// Exposes gradle buildSrc for IDE support
+// include "buildSrc"
+// rootProject.children.find{ it.name == "buildSrc" }.name = "spring-build-src"
