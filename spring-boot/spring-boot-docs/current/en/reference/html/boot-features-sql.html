@@ -1,6 +1,6 @@
 <html><head>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-   <title>29.&nbsp;Working with SQL databases</title><link rel="stylesheet" type="text/css" href="css/manual-multipage.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Spring Boot Reference Guide"><link rel="up" href="boot-features.html" title="Part&nbsp;IV.&nbsp;Spring Boot features"><link rel="prev" href="boot-features-security.html" title="28.&nbsp;Security"><link rel="next" href="boot-features-nosql.html" title="30.&nbsp;Working with NoSQL technologies"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">29.&nbsp;Working with SQL databases</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="boot-features-security.html">Prev</a>&nbsp;</td><th width="60%" align="center">Part&nbsp;IV.&nbsp;Spring Boot features</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="boot-features-nosql.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="boot-features-sql" href="#boot-features-sql"></a>29.&nbsp;Working with SQL databases</h2></div></div></div><p>The Spring Framework provides extensive support for working with SQL databases. From
+   <title>29.&nbsp;Working with SQL databases</title><link rel="stylesheet" type="text/css" href="css/manual-multipage.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Spring Boot Reference Guide"><link rel="up" href="boot-features.html" title="Part&nbsp;IV.&nbsp;Spring Boot features"><link rel="prev" href="boot-features-security.html" title="28.&nbsp;Security"><link rel="next" href="boot-features-nosql.html" title="30.&nbsp;Working with NoSQL technologies"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">29.&nbsp;Working with SQL databases</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="boot-features-security.html">Prev</a>&nbsp;</td><th width="60%" align="center">Part&nbsp;IV.&nbsp;Spring Boot features</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="boot-features-nosql.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="boot-features-sql" href="#boot-features-sql"></a>29.&nbsp;Working with SQL databases</h2></div></div></div><p>The Spring Framework provides extensive support for working with SQL databases. From
 direct JDBC access using <code class="literal">JdbcTemplate</code> to complete &#8216;object relational mapping&#8217;
 technologies such as Hibernate. Spring Data provides an additional level of functionality,
 creating <code class="literal">Repository</code> implementations directly from interfaces and using conventions to
@@ -18,13 +18,13 @@ that you want to use.</p><div class="note" style="margin-left: 0.5in; margin-rig
 reused by your whole test suite regardless of the number of application contexts that
 you use. If you want to make sure that each context has a separate embedded database,
 you should set <code class="literal">spring.datasource.generate-unique-name</code> to <code class="literal">true</code>.</p></td></tr></table></div><p>For example, typical POM dependencies would be:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependency&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.springframework.boot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>spring-boot-starter-data-jpa<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.springframework.boot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>spring-boot-starter-data-jpa<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependency&gt;</span>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependency&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.hsqldb<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>hsqldb<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;scope&gt;</span>runtime<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/scope&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.hsqldb<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>hsqldb<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;scope&gt;</span>runtime<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/scope&gt;</span>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependency&gt;</span></pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>You need a dependency on <code class="literal">spring-jdbc</code> for an embedded database to be
 auto-configured. In this example it&#8217;s pulled in transitively via
 <code class="literal">spring-boot-starter-data-jpa</code>.</p></td></tr></table></div><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>If, for whatever reason, you do configure the connection URL for an embedded
@@ -49,7 +49,7 @@ Spring Boot will attempt to auto-configure an embedded database.</p></td></tr></
 it for most databases from the <code class="literal">url</code>.</p></td></tr></table></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>For a pooling <code class="literal">DataSource</code> to be created we need to be able to verify that a valid
 <code class="literal">Driver</code> class is available, so we check for that before doing anything. I.e. if you set
 <code class="literal">spring.datasource.driver-class-name=com.mysql.jdbc.Driver</code> then that class has to be
-loadable.</p></td></tr></table></div><p>See <a class="link" href="https://github.com/spring-projects/spring-boot/tree/master/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jdbc/DataSourceProperties.java" target="_top"><code class="literal">DataSourceProperties</code></a>
+loadable.</p></td></tr></table></div><p>See <a class="link" href="https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jdbc/DataSourceProperties.java" target="_top"><code class="literal">DataSourceProperties</code></a>
 for more of the supported options. These are the standard options that work regardless of
 the actual implementation. It is also possible to fine-tune implementation-specific
 settings using their respective prefix (<code class="literal">spring.datasource.hikari.*</code>,
@@ -77,14 +77,14 @@ you can <code class="literal">@Autowire</code> them directly into your own beans
 <em><span class="hl-annotation" style="color: gray">@Component</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> MyBean {
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">final</span> JdbcTemplate jdbcTemplate;
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">final</span> JdbcTemplate jdbcTemplate;
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> MyBean(JdbcTemplate jdbcTemplate) {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.jdbcTemplate = jdbcTemplate;
-    }
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> MyBean(JdbcTemplate jdbcTemplate) {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.jdbcTemplate = jdbcTemplate;
+	}
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// ...</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// ...</span>
 
 }</pre><p>You can customize some properties of the template using the <code class="literal">spring.jdbc.template.*</code>
 properties:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-attribute">spring.jdbc.template.max-rows</span>=500</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>The <code class="literal">NamedParameterJdbcTemplate</code> reuses the same <code class="literal">JdbcTemplate</code> instance behind the
@@ -106,37 +106,37 @@ considered. A typical entity class would look something like this:</p><pre class
 <em><span class="hl-annotation" style="color: gray">@Entity</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> City <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">implements</span> Serializable {
 
-    <em><span class="hl-annotation" style="color: gray">@Id</span></em>
-    <em><span class="hl-annotation" style="color: gray">@GeneratedValue</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> Long id;
+	<em><span class="hl-annotation" style="color: gray">@Id</span></em>
+	<em><span class="hl-annotation" style="color: gray">@GeneratedValue</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> Long id;
 
-    <em><span class="hl-annotation" style="color: gray">@Column(nullable = false)</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> String name;
+	<em><span class="hl-annotation" style="color: gray">@Column(nullable = false)</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> String name;
 
-    <em><span class="hl-annotation" style="color: gray">@Column(nullable = false)</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> String state;
+	<em><span class="hl-annotation" style="color: gray">@Column(nullable = false)</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> String state;
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// ... additional members, often include @OneToMany mappings</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// ... additional members, often include @OneToMany mappings</span>
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">protected</span> City() {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// no-args constructor required by JPA spec</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// this one is protected since it shouldn't be used directly</span>
-    }
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">protected</span> City() {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// no-args constructor required by JPA spec</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// this one is protected since it shouldn't be used directly</span>
+	}
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> City(String name, String state) {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.name = name;
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.country = country;
-    }
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> City(String name, String state) {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.name = name;
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.country = country;
+	}
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> String getName() {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">return</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.name;
-    }
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> String getName() {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">return</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.name;
+	}
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> String getState() {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">return</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.state;
-    }
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> String getState() {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">return</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.state;
+	}
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// ... etc</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// ... etc</span>
 
 }</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>You can customize entity scanning locations using the <code class="literal">@EntityScan</code> annotation. See
 the <span class="emphasis"><em><a class="xref" href="howto-data-access.html#howto-separate-entity-definitions-from-spring-configuration" title="78.4&nbsp;Separate @Entity definitions from Spring configuration">Section&nbsp;78.4, &#8220;Separate @Entity definitions from Spring configuration&#8221;</a></em></span> how-to.</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-spring-data-jpa-repositories" href="#boot-features-spring-data-jpa-repositories"></a>29.3.2&nbsp;Spring Data JPA Repositories</h3></div></div></div><p>Spring Data JPA repositories are interfaces that you can define to access data. JPA
@@ -155,9 +155,9 @@ containing your main configuration class (the one annotated with
 
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">interface</span> CityRepository <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">extends</span> Repository&lt;City, Long&gt; {
 
-    Page&lt;City&gt; findAll(Pageable pageable);
+	Page&lt;City&gt; findAll(Pageable pageable);
 
-    City findByNameAndCountryAllIgnoringCase(String name, String country);
+	City findByNameAndCountryAllIgnoringCase(String name, String country);
 
 }</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>We have barely scratched the surface of Spring Data JPA. For complete details check
 their <a class="link" href="http://projects.spring.io/spring-data-jpa/" target="_top">reference documentation</a>.</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-creating-and-dropping-jpa-databases" href="#boot-features-creating-and-dropping-jpa-databases"></a>29.3.3&nbsp;Creating and dropping JPA databases</h3></div></div></div><p>By default, JPA databases will be automatically created <span class="strong"><strong>only</strong></span> if you use an embedded
@@ -169,7 +169,7 @@ properties, using <code class="literal">spring.jpa.properties.*</code> (the pref
 to the entity manager). Example:</p></td></tr></table></div><pre class="screen">spring.jpa.properties.hibernate.globally_quoted_identifiers=true</pre><p>passes <code class="literal">hibernate.globally_quoted_identifiers</code> to the Hibernate entity manager.</p><p>By default the DDL execution (or validation) is deferred until the <code class="literal">ApplicationContext</code>
 has started. There is also a <code class="literal">spring.jpa.generate-ddl</code> flag, but it is not used if
 Hibernate autoconfig is active because the <code class="literal">ddl-auto</code> settings are more fine-grained.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-jpa-in-web-environment" href="#boot-features-jpa-in-web-environment"></a>29.3.4&nbsp;Open EntityManager in View</h3></div></div></div><p>If you are running a web application, Spring Boot will by default register
-<a class="link" href="http://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/javadoc-api/org/springframework/orm/jpa/support/OpenEntityManagerInViewInterceptor.html" target="_top"><code class="literal">OpenEntityManagerInViewInterceptor</code></a>
+<a class="link" href="http://docs.spring.io/spring/docs/5.0.1.BUILD-SNAPSHOT/javadoc-api/org/springframework/orm/jpa/support/OpenEntityManagerInViewInterceptor.html" target="_top"><code class="literal">OpenEntityManagerInViewInterceptor</code></a>
 to apply the "Open EntityManager in View" pattern, i.e. to allow for lazy loading in web
 views. If you don&#8217;t want this behavior you should set <code class="literal">spring.jpa.open-in-view</code> to
 <code class="literal">false</code> in your <code class="literal">application.properties</code>.</p></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="boot-features-sql-h2-console" href="#boot-features-sql-h2-console"></a>29.4&nbsp;Using H2&#8217;s web console</h2></div></div></div><p>The <a class="link" href="http://www.h2database.com" target="_top">H2 database</a> provides a
@@ -193,44 +193,44 @@ If you are using the <code class="literal">jooq-codegen-maven</code> plugin (and
 <code class="literal">spring-boot-starter-parent</code> &#8220;parent POM&#8221;) you can safely omit the plugin&#8217;s <code class="literal">&lt;version&gt;</code>
 tag. You can also use Spring Boot defined version variables (e.g. <code class="literal">h2.version</code>) to
 declare the plugin&#8217;s database dependency. Here&#8217;s an example:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;plugin&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.jooq<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>jooq-codegen-maven<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;executions&gt;</span>
-        ...
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/executions&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependencies&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependency&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>com.h2database<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>h2<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;version&gt;</span>${h2.version}<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/version&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependency&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependencies&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;configuration&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;jdbc&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;driver&gt;</span>org.h2.Driver<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/driver&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;url&gt;</span>jdbc:h2:~/yourdatabase<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/url&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/jdbc&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;generator&gt;</span>
-            ...
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/generator&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/configuration&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.jooq<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>jooq-codegen-maven<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;executions&gt;</span>
+		...
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/executions&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependencies&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependency&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>com.h2database<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>h2<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;version&gt;</span>${h2.version}<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/version&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependency&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependencies&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;configuration&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;jdbc&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;driver&gt;</span>org.h2.Driver<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/driver&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;url&gt;</span>jdbc:h2:~/yourdatabase<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/url&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/jdbc&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;generator&gt;</span>
+			...
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/generator&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/configuration&gt;</span>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/plugin&gt;</span></pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="_using_dslcontext" href="#_using_dslcontext"></a>29.5.2&nbsp;Using DSLContext</h3></div></div></div><p>The fluent API offered by jOOQ is initiated via the <code class="literal">org.jooq.DSLContext</code> interface.
 Spring Boot will auto-configure a <code class="literal">DSLContext</code> as a Spring Bean and connect it to your
 application <code class="literal">DataSource</code>. To use the <code class="literal">DSLContext</code> you can just <code class="literal">@Autowire</code> it:</p><pre class="programlisting"><em><span class="hl-annotation" style="color: gray">@Component</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> JooqExample <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">implements</span> CommandLineRunner {
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">final</span> DSLContext create;
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">final</span> DSLContext create;
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> JooqExample(DSLContext dslContext) {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.create = dslContext;
-    }
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> JooqExample(DSLContext dslContext) {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.create = dslContext;
+	}
 
 }</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>The jOOQ manual tends to use a variable named <code class="literal">create</code> to hold the <code class="literal">DSLContext</code>,
 we&#8217;ve done the same for this example.</p></td></tr></table></div><p>You can then use the <code class="literal">DSLContext</code> to construct your queries:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> List&lt;GregorianCalendar&gt; authorsBornAfter1980() {
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">return</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.create.selectFrom(AUTHOR)
-        .where(AUTHOR.DATE_OF_BIRTH.greaterThan(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> GregorianCalendar(<span class="hl-number">1980</span>, <span class="hl-number">0</span>, <span class="hl-number">1</span>)))
-        .fetch(AUTHOR.DATE_OF_BIRTH);
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">return</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.create.selectFrom(AUTHOR)
+		.where(AUTHOR.DATE_OF_BIRTH.greaterThan(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> GregorianCalendar(<span class="hl-number">1980</span>, <span class="hl-number">0</span>, <span class="hl-number">1</span>)))
+		.fetch(AUTHOR.DATE_OF_BIRTH);
 }</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="_jooq_sql_dialect" href="#_jooq_sql_dialect"></a>29.5.3&nbsp;jOOQ SQL dialect</h3></div></div></div><p>Spring Boot determines the SQL dialect to use for your datasource unless the
 <code class="literal">spring.jooq.sql-dialect</code> property has been configured. If the dialect couldn&#8217;t be
 detected, <code class="literal">DEFAULT</code> is used.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Spring Boot can only auto-configure dialects supported by the open source version of

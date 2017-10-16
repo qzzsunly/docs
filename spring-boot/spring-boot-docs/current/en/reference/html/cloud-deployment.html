@@ -1,6 +1,6 @@
 <html><head>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-   <title>59.&nbsp;Deploying to the cloud</title><link rel="stylesheet" type="text/css" href="css/manual-multipage.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Spring Boot Reference Guide"><link rel="up" href="deployment.html" title="Part&nbsp;VI.&nbsp;Deploying Spring Boot applications"><link rel="prev" href="deployment.html" title="Part&nbsp;VI.&nbsp;Deploying Spring Boot applications"><link rel="next" href="deployment-install.html" title="60.&nbsp;Installing Spring Boot applications"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">59.&nbsp;Deploying to the cloud</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="deployment.html">Prev</a>&nbsp;</td><th width="60%" align="center">Part&nbsp;VI.&nbsp;Deploying Spring Boot applications</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="deployment-install.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="cloud-deployment" href="#cloud-deployment"></a>59.&nbsp;Deploying to the cloud</h2></div></div></div><p>Spring Boot&#8217;s executable jars are ready-made for most popular cloud PaaS
+   <title>59.&nbsp;Deploying to the cloud</title><link rel="stylesheet" type="text/css" href="css/manual-multipage.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Spring Boot Reference Guide"><link rel="up" href="deployment.html" title="Part&nbsp;VI.&nbsp;Deploying Spring Boot applications"><link rel="prev" href="deployment.html" title="Part&nbsp;VI.&nbsp;Deploying Spring Boot applications"><link rel="next" href="deployment-install.html" title="60.&nbsp;Installing Spring Boot applications"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">59.&nbsp;Deploying to the cloud</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="deployment.html">Prev</a>&nbsp;</td><th width="60%" align="center">Part&nbsp;VI.&nbsp;Deploying Spring Boot applications</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="deployment-install.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="cloud-deployment" href="#cloud-deployment"></a>59.&nbsp;Deploying to the cloud</h2></div></div></div><p>Spring Boot&#8217;s executable jars are ready-made for most popular cloud PaaS
 (platform-as-a-service) providers. These providers tend to require that you
 &#8220;bring your own container&#8221;; they manage application processes (not Java applications
 specifically), so they need some intermediary layer that adapts <span class="emphasis"><em>your</em></span> application to the
@@ -64,14 +64,14 @@ extracts them and flattens the data into properties that can be accessed through
 Spring&#8217;s <code class="literal">Environment</code> abstraction:</p><pre class="programlisting"><em><span class="hl-annotation" style="color: gray">@Component</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> MyBean <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">implements</span> EnvironmentAware {
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> String instanceId;
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> String instanceId;
 
-    <em><span class="hl-annotation" style="color: gray">@Override</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> setEnvironment(Environment environment) {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.instanceId = environment.getProperty(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"vcap.application.instance_id"</span>);
-    }
+	<em><span class="hl-annotation" style="color: gray">@Override</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> setEnvironment(Environment environment) {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.instanceId = environment.getProperty(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"vcap.application.instance_id"</span>);
+	}
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// ...</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// ...</span>
 
 }</pre><p>All Cloud Foundry properties are prefixed with <code class="literal">vcap</code>. You can use vcap properties to
 access application information (such as the public URL of the application) and service
@@ -104,7 +104,7 @@ Total 95 (delta 31), reused 0 (delta 0)
        [INFO] Scanning for projects...
        Downloading: http://repo.spring.io/...
        Downloaded: http://repo.spring.io/... (818 B at 1.8 KB/sec)
-        ....
+		....
        Downloaded: http://s3pository.heroku.com/jvm/... (152 KB at 595.3 KB/sec)
        [INFO] Installing /tmp/build_0c35a5d2-a067-4abc-a232-14b1fb7a8229/target/...
        [INFO] Installing /tmp/build_0c35a5d2-a067-4abc-a232-14b1fb7a8229/pom.xml ...
@@ -157,13 +157,13 @@ either use the &#8220;Tomcat Platform&#8221; or the &#8220;Java SE platform&#822
 configuration required, just follow the official guide.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="_using_the_java_se_platform" href="#_using_the_java_se_platform"></a>Using the Java SE platform</h4></div></div></div><p>This option applies to Spring Boot projects producing a jar file and running an embedded
 web container. Elastic Beanstalk environments run an nginx instance on port 80 to proxy
 the actual application, running on port 5000. To configure it, add the following to your
-<code class="literal">application.properties</code>:</p><pre class="screen">server.port=5000</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="_best_practices" href="#_best_practices"></a>Best practices</h4></div></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="_uploading_binaries_instead_of_sources" href="#_uploading_binaries_instead_of_sources"></a>Uploading binaries instead of sources</h5></div></div></div><p>By default Elastic Beanstalk uploads sources and compile them in AWS. To upload the
+<code class="literal">application.properties</code>:</p><pre class="screen">server.port=5000</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="_best_practices" href="#_best_practices"></a>Best practices</h4></div></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="_uploading_binaries_instead_of_sources" href="#_uploading_binaries_instead_of_sources"></a>Uploading binaries instead of sources</h5></div></div></div><p>By default Elastic Beanstalk uploads sources and compiles them in AWS. To upload the
 binaries instead, add the following to your <code class="literal">.elasticbeanstalk/config.yml</code> file:</p><pre class="programlisting">deploy:
-    artifact: target/demo-0.0.1-SNAPSHOT.jar</pre></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="_reduce_costs_by_setting_the_environment_type" href="#_reduce_costs_by_setting_the_environment_type"></a>Reduce costs by setting the environment type</h5></div></div></div><p>By default an Elastic Beanstalk environment is load balanced. The load balancer has a cost
+	artifact: target/demo-0.0.1-SNAPSHOT.jar</pre></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a name="_reduce_costs_by_setting_the_environment_type" href="#_reduce_costs_by_setting_the_environment_type"></a>Reduce costs by setting the environment type</h5></div></div></div><p>By default an Elastic Beanstalk environment is load balanced. The load balancer has a cost
 perspective, to avoid it, set the environment type to &#8220;Single instance&#8221; as described
 <a class="link" href="http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environments-create-wizard.html#environments-create-wizard-capacity" target="_top">in the Amazon documentation</a>.
 Single instance environments can be created using the CLI as well using the following
-command:</p><pre class="screen">eb create -s</pre></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="_summary" href="#_summary"></a>59.4.2&nbsp;Summary</h3></div></div></div><p>This is one of the easiest way to get to AWS, but there are more things
+command:</p><pre class="screen">eb create -s</pre></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="_summary" href="#_summary"></a>59.4.2&nbsp;Summary</h3></div></div></div><p>This is one of the easiest ways to get to AWS, but there are more things
 to cover, e.g.: how to integrate Elastic Beanstalk into any CI / CD tool, using the
 Elastic Beanstalk maven plugin instead of the CLI, etc. There is a
 <a class="link" href="https://exampledriven.wordpress.com/2017/01/09/spring-boot-aws-elastic-beanstalk-example/" target="_top">blog</a>
@@ -208,7 +208,7 @@ Compute Engine.</p><p>To run in App Engine you can create a project in the UI fi
 identifier for you and also HTTP routes. Add a Java app to the project and leave it empty,
 then use the <a class="link" href="https://cloud.google.com/sdk/downloads" target="_top">Google Cloud SDK</a> to push your
 Spring Boot app into that slot from the command line or CI build.</p><p>App Engine needs you to create an <code class="literal">app.yaml</code> file to describe the resources your app
-requires. Normally you put this in <code class="literal">src/min/appengine</code>, and it looks something like this:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-attribute">service</span>: default
+requires. Normally you put this in <code class="literal">src/main/appengine</code>, and it looks something like this:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-attribute">service</span>: default
 
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-attribute">runtime</span>: java
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-attribute">env</span>: flex
@@ -229,12 +229,12 @@ requires. Normally you put this in <code class="literal">src/min/appengine</code
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-attribute">env_variables</span>:
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-attribute">  ENCRYPT_KEY</span>: your_encryption_key_here</pre><p>You can deploy the app, for example, with a Maven plugin by simply adding the project ID
 to the build configuration:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;plugin&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>com.google.cloud.tools<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>appengine-maven-plugin<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;version&gt;</span>1.3.0<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/version&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;configuration&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;project&gt;</span>myproject<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/project&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/configuration&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>com.google.cloud.tools<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>appengine-maven-plugin<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;version&gt;</span>1.3.0<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/version&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;configuration&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;project&gt;</span>myproject<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/project&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/configuration&gt;</span>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/plugin&gt;</span></pre><p>Then deploy with <code class="literal">mvn appengine:deploy</code> (if you need to authenticate first the build will
 fail).</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Google App Engine Classic is tied to the Servlet 2.5 API, so you can&#8217;t deploy a
 Spring Application there without some modifications. See the

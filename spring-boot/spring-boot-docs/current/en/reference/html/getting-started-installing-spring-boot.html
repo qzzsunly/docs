@@ -1,6 +1,6 @@
 <html><head>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-   <title>10.&nbsp;Installing Spring Boot</title><link rel="stylesheet" type="text/css" href="css/manual-multipage.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Spring Boot Reference Guide"><link rel="up" href="getting-started.html" title="Part&nbsp;II.&nbsp;Getting started"><link rel="prev" href="getting-started-system-requirements.html" title="9.&nbsp;System Requirements"><link rel="next" href="getting-started-first-application.html" title="11.&nbsp;Developing your first Spring Boot application"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">10.&nbsp;Installing Spring Boot</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="getting-started-system-requirements.html">Prev</a>&nbsp;</td><th width="60%" align="center">Part&nbsp;II.&nbsp;Getting started</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="getting-started-first-application.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="getting-started-installing-spring-boot" href="#getting-started-installing-spring-boot"></a>10.&nbsp;Installing Spring Boot</h2></div></div></div><p>Spring Boot can be used with &#8220;classic&#8221; Java development tools or installed as a command
+   <title>10.&nbsp;Installing Spring Boot</title><link rel="stylesheet" type="text/css" href="css/manual-multipage.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Spring Boot Reference Guide"><link rel="up" href="getting-started.html" title="Part&nbsp;II.&nbsp;Getting started"><link rel="prev" href="getting-started-system-requirements.html" title="9.&nbsp;System Requirements"><link rel="next" href="getting-started-first-application.html" title="11.&nbsp;Developing your first Spring Boot application"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">10.&nbsp;Installing Spring Boot</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="getting-started-system-requirements.html">Prev</a>&nbsp;</td><th width="60%" align="center">Part&nbsp;II.&nbsp;Getting started</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="getting-started-first-application.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="getting-started-installing-spring-boot" href="#getting-started-installing-spring-boot"></a>10.&nbsp;Installing Spring Boot</h2></div></div></div><p>Spring Boot can be used with &#8220;classic&#8221; Java development tools or installed as a command
 line tool. Regardless, you will need <a class="link" href="http://www.java.com" target="_top">Java SDK v1.8</a> or higher. You
 should check your current Java installation before you begin:</p><pre class="screen">$ java -version</pre><p>If you are new to Java development, or if you just want to experiment with Spring Boot
 you might want to try the <a class="link" href="getting-started-installing-spring-boot.html#getting-started-installing-the-cli" title="10.2&nbsp;Installing the Spring Boot CLI">Spring Boot CLI</a> first,
@@ -19,81 +19,81 @@ dependencies to one or more <a class="link" href="using-boot-build-systems.html#
 <a class="link" href="build-tool-plugins-maven-plugin.html" title="67.&nbsp;Spring Boot Maven plugin">Maven plugin</a> to create
 executable jars.</p><p>Here is a typical <code class="literal">pom.xml</code> file:</p><pre class="programlisting"><span class="hl-directive" style="color: maroon">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;project</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-attribute">xmlns</span>=<span xmlns:d="http://docbook.org/ns/docbook" class="hl-value">"http://maven.apache.org/POM/4.0.0"</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-attribute">xmlns:xsi</span>=<span xmlns:d="http://docbook.org/ns/docbook" class="hl-value">"http://www.w3.org/2001/XMLSchema-instance"</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-attribute">xsi:schemaLocation</span>=<span xmlns:d="http://docbook.org/ns/docbook" class="hl-value">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;modelVersion&gt;</span>4.0.0<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/modelVersion&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-attribute">xsi:schemaLocation</span>=<span xmlns:d="http://docbook.org/ns/docbook" class="hl-value">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span><span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;modelVersion&gt;</span>4.0.0<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/modelVersion&gt;</span>
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>com.example<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>myproject<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;version&gt;</span>0.0.1-SNAPSHOT<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/version&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>com.example<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>myproject<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;version&gt;</span>0.0.1-SNAPSHOT<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/version&gt;</span>
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">&lt;!-- Inherit defaults from Spring Boot --&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;parent&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.springframework.boot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>spring-boot-starter-parent<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;version&gt;</span>2.0.0.BUILD-SNAPSHOT<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/version&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/parent&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">&lt;!-- Inherit defaults from Spring Boot --&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;parent&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.springframework.boot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>spring-boot-starter-parent<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;version&gt;</span>2.0.0.BUILD-SNAPSHOT<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/version&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/parent&gt;</span>
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">&lt;!-- Add typical dependencies for a web application --&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependencies&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependency&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.springframework.boot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>spring-boot-starter-web<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependency&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependencies&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">&lt;!-- Add typical dependencies for a web application --&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependencies&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependency&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.springframework.boot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>spring-boot-starter-web<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependency&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependencies&gt;</span>
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">&lt;!-- Package as an executable jar --&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;build&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;plugins&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;plugin&gt;</span>
-                <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.springframework.boot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
-                <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/plugin&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/plugins&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/build&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">&lt;!-- Package as an executable jar --&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;build&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;plugins&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;plugin&gt;</span>
+				<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.springframework.boot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
+				<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/plugin&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/plugins&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/build&gt;</span>
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">&lt;!-- Add Spring repositories --&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">&lt;!-- (you don't need this if you are using a .RELEASE version) --&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;repositories&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;repository&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;id&gt;</span>spring-snapshots<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/id&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;url&gt;</span>http://repo.spring.io/snapshot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/url&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;snapshots&gt;</span><span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;enabled&gt;</span>true<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/enabled&gt;</span><span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/snapshots&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/repository&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;repository&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;id&gt;</span>spring-milestones<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/id&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;url&gt;</span>http://repo.spring.io/milestone<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/url&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/repository&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/repositories&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;pluginRepositories&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;pluginRepository&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;id&gt;</span>spring-snapshots<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/id&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;url&gt;</span>http://repo.spring.io/snapshot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/url&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/pluginRepository&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;pluginRepository&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;id&gt;</span>spring-milestones<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/id&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;url&gt;</span>http://repo.spring.io/milestone<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/url&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/pluginRepository&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/pluginRepositories&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">&lt;!-- Add Spring repositories --&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">&lt;!-- (you don't need this if you are using a .RELEASE version) --&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;repositories&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;repository&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;id&gt;</span>spring-snapshots<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/id&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;url&gt;</span>http://repo.spring.io/snapshot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/url&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;snapshots&gt;</span><span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;enabled&gt;</span>true<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/enabled&gt;</span><span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/snapshots&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/repository&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;repository&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;id&gt;</span>spring-milestones<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/id&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;url&gt;</span>http://repo.spring.io/milestone<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/url&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/repository&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/repositories&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;pluginRepositories&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;pluginRepository&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;id&gt;</span>spring-snapshots<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/id&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;url&gt;</span>http://repo.spring.io/snapshot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/url&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/pluginRepository&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;pluginRepository&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;id&gt;</span>spring-milestones<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/id&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;url&gt;</span>http://repo.spring.io/milestone<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/url&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/pluginRepository&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/pluginRepositories&gt;</span>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/project&gt;</span></pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>The <code class="literal">spring-boot-starter-parent</code> is a great way to use Spring Boot, but it might
 not be suitable all of the time. Sometimes you may need to inherit from a different
 parent POM, or you might just not like our default settings. See
 <a class="xref" href="using-boot-build-systems.html#using-boot-maven-without-a-parent" title="13.2.2&nbsp;Using Spring Boot without the parent POM">Section&nbsp;13.2.2, &#8220;Using Spring Boot without the parent POM&#8221;</a> for an alternative solution that uses an <code class="literal">import</code>
-scope.</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="getting-started-gradle-installation" href="#getting-started-gradle-installation"></a>10.1.2&nbsp;Gradle installation</h3></div></div></div><p>Spring Boot is compatible with Gradle 3 (3.4 or later). If you don&#8217;t already have Gradle
-installed you can follow the instructions at <a class="link" href="http://www.gradle.org/" target="_top">www.gradle.org/</a>.</p><p>Spring Boot dependencies can be declared using the <code class="literal">org.springframework.boot</code> <code class="literal">group</code>.
+scope.</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="getting-started-gradle-installation" href="#getting-started-gradle-installation"></a>10.1.2&nbsp;Gradle installation</h3></div></div></div><p>Spring Boot is compatible with Gradle 4. If you don&#8217;t already have Gradle installed you
+can follow the instructions at <a class="link" href="http://www.gradle.org/" target="_top">www.gradle.org/</a>.</p><p>Spring Boot dependencies can be declared using the <code class="literal">org.springframework.boot</code> <code class="literal">group</code>.
 Typically your project will declare dependencies to one or more
 <a class="link" href="using-boot-build-systems.html#using-boot-starter" title="13.5&nbsp;Starters">&#8220;Starters&#8221;</a>. Spring Boot
 provides a useful <a class="link" href="build-tool-plugins-gradle-plugin.html" title="68.&nbsp;Spring Boot Gradle plugin">Gradle plugin</a>
 that can be used to simplify dependency declarations and to create executable jars.</p><div class="sidebar"><div class="titlepage"><div><div><p class="title"><b>Gradle Wrapper</b></p></div></div></div><p>The Gradle Wrapper provides a nice way of &#8220;obtaining&#8221; Gradle when you need to build a
 project. It&#8217;s a small script and library that you commit alongside your code to bootstrap
-the build process. See <a class="link" href="https://docs.gradle.org/3.4.1/userguide/gradle_wrapper.html" target="_top">docs.gradle.org/3.4.1/userguide/gradle_wrapper.html</a> for details.</p></div><p>Here is a typical <code class="literal">build.gradle</code> file:</p><pre class="programlisting">buildscript {
-    repositories {
-        jcenter()
-        maven { url <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'http://repo.spring.io/snapshot'</span> }
-        maven { url <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'http://repo.spring.io/milestone'</span> }
-    }
-    dependencies {
-        classpath <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'org.springframework.boot:spring-boot-gradle-plugin:2.0.0.BUILD-SNAPSHOT'</span>
-    }
+the build process. See <a class="link" href="https://docs.gradle.org/4.0.2/userguide/gradle_wrapper.html" target="_top">docs.gradle.org/4.0.2/userguide/gradle_wrapper.html</a> for details.</p></div><p>Here is a typical <code class="literal">build.gradle</code> file:</p><pre class="programlisting">buildscript {
+	repositories {
+		jcenter()
+		maven { url <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'http://repo.spring.io/snapshot'</span> }
+		maven { url <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'http://repo.spring.io/milestone'</span> }
+	}
+	dependencies {
+		classpath <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'org.springframework.boot:spring-boot-gradle-plugin:2.0.0.BUILD-SNAPSHOT'</span>
+	}
 }
 
 apply plugin: <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'java'</span>
@@ -101,24 +101,24 @@ apply plugin: <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'o
 apply plugin: <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'io.spring.dependency-management'</span>
 
 jar {
-    baseName = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'myproject'</span>
-    version =  <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'0.0.1-SNAPSHOT'</span>
+	baseName = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'myproject'</span>
+	version =  <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">'0.0.1-SNAPSHOT'</span>
 }
 
 repositories {
-    jcenter()
-    maven { url <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"http://repo.spring.io/snapshot"</span> }
-    maven { url <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"http://repo.spring.io/milestone"</span> }
+	jcenter()
+	maven { url <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"http://repo.spring.io/snapshot"</span> }
+	maven { url <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"http://repo.spring.io/milestone"</span> }
 }
 
 dependencies {
-    compile(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"org.springframework.boot:spring-boot-starter-web"</span>)
-    testCompile(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"org.springframework.boot:spring-boot-starter-test"</span>)
+	compile(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"org.springframework.boot:spring-boot-starter-web"</span>)
+	testCompile(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"org.springframework.boot:spring-boot-starter-test"</span>)
 }</pre></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="getting-started-installing-the-cli" href="#getting-started-installing-the-cli"></a>10.2&nbsp;Installing the Spring Boot CLI</h2></div></div></div><p>The Spring Boot CLI is a command line tool that can be used if you want to quickly
 prototype with Spring. It allows you to run <a class="link" href="http://groovy.codehaus.org/" target="_top">Groovy</a> scripts,
 which means that you have a familiar Java-like syntax, without so much boilerplate code.</p><p>You don&#8217;t need to use the CLI to work with Spring Boot but it&#8217;s definitely the quickest
 way to get a Spring application off the ground.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="getting-started-manual-cli-installation" href="#getting-started-manual-cli-installation"></a>10.2.1&nbsp;Manual installation</h3></div></div></div><p>You can download the Spring CLI distribution from the Spring software repository:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><a class="link" href="http://repo.spring.io/snapshot/org/springframework/boot/spring-boot-cli/2.0.0.BUILD-SNAPSHOT/spring-boot-cli-2.0.0.BUILD-SNAPSHOT-bin.zip" target="_top">spring-boot-cli-2.0.0.BUILD-SNAPSHOT-bin.zip</a></li><li class="listitem"><a class="link" href="http://repo.spring.io/snapshot/org/springframework/boot/spring-boot-cli/2.0.0.BUILD-SNAPSHOT/spring-boot-cli-2.0.0.BUILD-SNAPSHOT-bin.tar.gz" target="_top">spring-boot-cli-2.0.0.BUILD-SNAPSHOT-bin.tar.gz</a></li></ul></div><p>Cutting edge <a class="link" href="http://repo.spring.io/snapshot/org/springframework/boot/spring-boot-cli/" target="_top">snapshot distributions</a>
-are also available.</p><p>Once downloaded, follow the <a class="link" href="https://raw.github.com/spring-projects/spring-boot/master/spring-boot-cli/src/main/content/INSTALL.txt" target="_top">INSTALL.txt</a>
+are also available.</p><p>Once downloaded, follow the <a class="link" href="https://raw.github.com/spring-projects/spring-boot/master/spring-boot-project/spring-boot-cli/src/main/content/INSTALL.txt" target="_top">INSTALL.txt</a>
 instructions from the unpacked archive. In summary: there is a <code class="literal">spring</code> script
 (<code class="literal">spring.bat</code> for Windows) in a <code class="literal">bin/</code> directory in the <code class="literal">.zip</code> file, or alternatively you
 can use <code class="literal">java -jar</code> with the <code class="literal">.jar</code> file (the script helps you to be sure that the
@@ -161,10 +161,10 @@ completion scripts are automatically registered with your shell.</p></td></tr></
 a file called <code class="literal">app.groovy</code>:</p><pre class="programlisting"><em><span class="hl-annotation" style="color: gray">@RestController</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> ThisWillActuallyRun {
 
-    <em><span class="hl-annotation" style="color: gray">@RequestMapping("/")</span></em>
-    String home() {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Hello World!"</span>
-    }
+	<em><span class="hl-annotation" style="color: gray">@RequestMapping("/")</span></em>
+	String home() {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Hello World!"</span>
+	}
 
 }</pre><p>Then simply run it from a shell:</p><pre class="screen">$ spring run app.groovy</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>It will take some time when you first run the application as dependencies are
 downloaded. Subsequent runs will be much quicker.</p></td></tr></table></div><p>Open <a class="link" href="http://localhost:8080" target="_top">localhost:8080</a> in your favorite web browser and you should see the following

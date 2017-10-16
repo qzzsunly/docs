@@ -1,19 +1,19 @@
 <html><head>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-   <title>20.&nbsp;Developer tools</title><link rel="stylesheet" type="text/css" href="css/manual-multipage.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Spring Boot Reference Guide"><link rel="up" href="using-boot.html" title="Part&nbsp;III.&nbsp;Using Spring Boot"><link rel="prev" href="using-boot-running-your-application.html" title="19.&nbsp;Running your application"><link rel="next" href="using-boot-packaging-for-production.html" title="21.&nbsp;Packaging your application for production"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">20.&nbsp;Developer tools</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="using-boot-running-your-application.html">Prev</a>&nbsp;</td><th width="60%" align="center">Part&nbsp;III.&nbsp;Using Spring Boot</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="using-boot-packaging-for-production.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="using-boot-devtools" href="#using-boot-devtools"></a>20.&nbsp;Developer tools</h2></div></div></div><p>Spring Boot includes an additional set of tools that can make the application
+   <title>20.&nbsp;Developer tools</title><link rel="stylesheet" type="text/css" href="css/manual-multipage.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Spring Boot Reference Guide"><link rel="up" href="using-boot.html" title="Part&nbsp;III.&nbsp;Using Spring Boot"><link rel="prev" href="using-boot-running-your-application.html" title="19.&nbsp;Running your application"><link rel="next" href="using-boot-packaging-for-production.html" title="21.&nbsp;Packaging your application for production"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">20.&nbsp;Developer tools</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="using-boot-running-your-application.html">Prev</a>&nbsp;</td><th width="60%" align="center">Part&nbsp;III.&nbsp;Using Spring Boot</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="using-boot-packaging-for-production.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="using-boot-devtools" href="#using-boot-devtools"></a>20.&nbsp;Developer tools</h2></div></div></div><p>Spring Boot includes an additional set of tools that can make the application
 development experience a little more pleasant. The <code class="literal">spring-boot-devtools</code> module can be
 included in any project to provide additional development-time features. To include
 devtools support, simply add the module dependency to your build:</p><p><b>Maven.&nbsp;</b>
 </p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependencies&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependency&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.springframework.boot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>spring-boot-devtools<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;optional&gt;</span>true<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/optional&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependency&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;dependency&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.springframework.boot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>spring-boot-devtools<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;optional&gt;</span>true<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/optional&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependency&gt;</span>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/dependencies&gt;</span></pre><p>
 </p><p><b>Gradle.&nbsp;</b>
 </p><pre class="programlisting">dependencies {
-    compile(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"org.springframework.boot:spring-boot-devtools"</span>)
+	compile(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"org.springframework.boot:spring-boot-devtools"</span>)
 }</pre><p>
 </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Developer tools are automatically disabled when running a fully packaged
 application. If your application is launched using <code class="literal">java -jar</code> or if it&#8217;s started using a
@@ -33,7 +33,7 @@ For this reason, spring-boot-devtools will disable those caching options by defa
 For example, Thymeleaf offers the <code class="literal">spring.thymeleaf.cache</code> property. Rather than needing
 to set these properties manually, the <code class="literal">spring-boot-devtools</code> module will automatically
 apply sensible development-time configuration.</p><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>For a complete list of the properties that are applied see
-<a class="link" href="https://github.com/spring-projects/spring-boot/tree/master/spring-boot-devtools/src/main/java/org/springframework/boot/devtools/env/DevToolsPropertyDefaultsPostProcessor.java" target="_top">DevToolsPropertyDefaultsPostProcessor</a>.</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="using-boot-devtools-restart" href="#using-boot-devtools-restart"></a>20.2&nbsp;Automatic restart</h2></div></div></div><p>Applications that use <code class="literal">spring-boot-devtools</code> will automatically restart whenever files
+<a class="link" href="https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-devtools/src/main/java/org/springframework/boot/devtools/env/DevToolsPropertyDefaultsPostProcessor.java" target="_top">DevToolsPropertyDefaultsPostProcessor</a>.</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="using-boot-devtools-restart" href="#using-boot-devtools-restart"></a>20.2&nbsp;Automatic restart</h2></div></div></div><p>Applications that use <code class="literal">spring-boot-devtools</code> will automatically restart whenever files
 on the classpath change. This can be a useful feature when working in an IDE as it gives
 a very fast feedback loop for code changes. By default, any entry on the classpath that
 points to a folder will be monitored for changes. Note that certain resources such as
@@ -65,7 +65,7 @@ classloading issues, you could consider reloading technologies such as
 <a class="link" href="http://zeroturnaround.com/software/jrebel/" target="_top">JRebel</a> from ZeroTurnaround. These work by
 rewriting classes as they are loaded to make them more amenable to reloading.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="using-boot-devtools-restart-exclude" href="#using-boot-devtools-restart-exclude"></a>20.2.1&nbsp;Excluding resources</h3></div></div></div><p>Certain resources don&#8217;t necessarily need to trigger a restart when they are changed. For
 example, Thymeleaf templates can just be edited in-place. By default changing resources
-in <code class="literal">/META-INF/maven</code>, <code class="literal">/META-INF/resources</code> ,<code class="literal">/resources</code> ,<code class="literal">/static</code> ,<code class="literal">/public</code> or
+in <code class="literal">/META-INF/maven</code>, <code class="literal">/META-INF/resources</code>, <code class="literal">/resources</code>, <code class="literal">/static</code>, <code class="literal">/public</code> or
 <code class="literal">/templates</code> will not trigger a restart but will trigger a
 <a class="link" href="using-boot-devtools.html#using-boot-devtools-livereload" title="20.3&nbsp;LiveReload">live reload</a>. If you want to customize these exclusions
 you can use the <code class="literal">spring.devtools.restart.exclude</code> property. For example, to exclude only
@@ -82,8 +82,8 @@ beneath the additional paths will trigger a full restart or just a
 watch for file changes).</p><p>If you need to <span class="emphasis"><em>completely</em></span> disable restart support, for example, because it doesn&#8217;t work
 with a specific library, you need to set a <code class="literal">System</code> property before calling
 <code class="literal">SpringApplication.run(&#8230;&#8203;)</code>. For example:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">static</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> main(String[] args) {
-    System.setProperty(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"spring.devtools.restart.enabled"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"false"</span>);
-    SpringApplication.run(MyApp.<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span>, args);
+	System.setProperty(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"spring.devtools.restart.enabled"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"false"</span>);
+	SpringApplication.run(MyApp.<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span>, args);
 }</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="using-boot-devtools-restart-triggerfile" href="#using-boot-devtools-restart-triggerfile"></a>20.2.4&nbsp;Using a trigger file</h3></div></div></div><p>If you work with an IDE that continuously compiles changed files, you might prefer to
 trigger restarts only at specific times. To do this you can use a &#8220;trigger file&#8221;, which
 is a special file that must be modified when you want to actually trigger a restart check.
@@ -124,15 +124,15 @@ the following:</p><p><b>~/.spring-boot-devtools.properties.&nbsp;</b>
 </p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="using-boot-devtools-remote" href="#using-boot-devtools-remote"></a>20.5&nbsp;Remote applications</h2></div></div></div><p>The Spring Boot developer tools are not just limited to local development. You can also
 use several features when running applications remotely. Remote support is opt-in, to
 enable it you need to make sure that <code class="literal">devtools</code> is included in the repackaged archive:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;build&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;plugins&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;plugin&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.springframework.boot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;configuration&gt;</span>
-                <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;excludeDevtools&gt;</span>false<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/excludeDevtools&gt;</span>
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/configuration&gt;</span>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/plugin&gt;</span>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/plugins&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;plugins&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;plugin&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;groupId&gt;</span>org.springframework.boot<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/groupId&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;artifactId&gt;</span>spring-boot-maven-plugin<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/artifactId&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;configuration&gt;</span>
+				<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;excludeDevtools&gt;</span>false<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/excludeDevtools&gt;</span>
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/configuration&gt;</span>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/plugin&gt;</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/plugins&gt;</span>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-tag">&lt;/build&gt;</span></pre><p>Then you need to set a <code class="literal">spring.devtools.remote.secret</code> property, for example:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-attribute">spring.devtools.remote.secret</span>=mysecret</pre><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Warning"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Warning]" src="images/warning.png"></td><th align="left">Warning</th></tr><tr><td align="left" valign="top"><p>Enabling <code class="literal">spring-boot-devtools</code> on a remote application is a security risk. You
 should never enable support on a production deployment.</p></td></tr></table></div><p>Remote devtools support is provided in two parts; there is a server side endpoint that
 accepts connections, and a client application that you run in your IDE. The server

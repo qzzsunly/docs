@@ -1,12 +1,12 @@
 <html><head>
       <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-   <title>43.&nbsp;Testing</title><link rel="stylesheet" type="text/css" href="css/manual-multipage.css"><meta name="generator" content="DocBook XSL Stylesheets V1.78.1"><link rel="home" href="index.html" title="Spring Boot Reference Guide"><link rel="up" href="boot-features.html" title="Part&nbsp;IV.&nbsp;Spring Boot features"><link rel="prev" href="boot-features-jmx.html" title="42.&nbsp;Monitoring and management over JMX"><link rel="next" href="boot-features-websockets.html" title="44.&nbsp;WebSockets"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">43.&nbsp;Testing</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="boot-features-jmx.html">Prev</a>&nbsp;</td><th width="60%" align="center">Part&nbsp;IV.&nbsp;Spring Boot features</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="boot-features-websockets.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="boot-features-testing" href="#boot-features-testing"></a>43.&nbsp;Testing</h2></div></div></div><p>Spring Boot provides a number of utilities and annotations to help when testing your
+   <title>43.&nbsp;Testing</title><link rel="stylesheet" type="text/css" href="css/manual-multipage.css"><meta name="generator" content="DocBook XSL Stylesheets V1.79.1"><link rel="home" href="index.html" title="Spring Boot Reference Guide"><link rel="up" href="boot-features.html" title="Part&nbsp;IV.&nbsp;Spring Boot features"><link rel="prev" href="boot-features-jmx.html" title="42.&nbsp;Monitoring and management over JMX"><link rel="next" href="boot-features-websockets.html" title="44.&nbsp;WebSockets"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">43.&nbsp;Testing</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="boot-features-jmx.html">Prev</a>&nbsp;</td><th width="60%" align="center">Part&nbsp;IV.&nbsp;Spring Boot features</th><td width="20%" align="right">&nbsp;<a accesskey="n" href="boot-features-websockets.html">Next</a></td></tr></table><hr></div><div class="chapter"><div class="titlepage"><div><div><h2 class="title"><a name="boot-features-testing" href="#boot-features-testing"></a>43.&nbsp;Testing</h2></div></div></div><p>Spring Boot provides a number of utilities and annotations to help when testing your
 application. Test support is provided by two modules; <code class="literal">spring-boot-test</code> contains core
 items, and <code class="literal">spring-boot-test-autoconfigure</code> supports auto-configuration for tests.</p><p>Most developers will just use the <code class="literal">spring-boot-starter-test</code> &#8216;Starter&#8217; which
 imports both Spring Boot test modules as well has JUnit, AssertJ, Hamcrest and a number
 of other useful libraries.</p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="boot-features-test-scope-dependencies" href="#boot-features-test-scope-dependencies"></a>43.1&nbsp;Test scope dependencies</h2></div></div></div><p>If you use the
 <code class="literal">spring-boot-starter-test</code> &#8216;Starter&#8217; (in the <code class="literal">test</code> <code class="literal">scope</code>), you will find
-the following provided libraries:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><a class="link" href="http://junit.org" target="_top">JUnit</a>&#8201;&#8212;&#8201;The de-facto standard for unit testing Java applications.</li><li class="listitem"><a class="link" href="http://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/testing.html#integration-testing" target="_top">Spring Test</a> &amp; Spring Boot Test&#8201;&#8212;&#8201;Utilities and integration test support for Spring Boot applications.</li><li class="listitem"><a class="link" href="http://joel-costigliola.github.io/assertj/" target="_top">AssertJ</a>&#8201;&#8212;&#8201;A fluent assertion library.</li><li class="listitem"><a class="link" href="http://hamcrest.org/JavaHamcrest/" target="_top">Hamcrest</a>&#8201;&#8212;&#8201;A library of matcher objects (also known
+the following provided libraries:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><a class="link" href="http://junit.org" target="_top">JUnit</a>&#8201;&#8212;&#8201;The de-facto standard for unit testing Java applications.</li><li class="listitem"><a class="link" href="http://docs.spring.io/spring/docs/5.0.1.BUILD-SNAPSHOT/spring-framework-reference/testing.html#integration-testing" target="_top">Spring Test</a> &amp; Spring Boot Test&#8201;&#8212;&#8201;Utilities and integration test support for Spring Boot applications.</li><li class="listitem"><a class="link" href="http://joel-costigliola.github.io/assertj/" target="_top">AssertJ</a>&#8201;&#8212;&#8201;A fluent assertion library.</li><li class="listitem"><a class="link" href="http://hamcrest.org/JavaHamcrest/" target="_top">Hamcrest</a>&#8201;&#8212;&#8201;A library of matcher objects (also known
 as constraints or predicates).</li><li class="listitem"><a class="link" href="http://mockito.org/" target="_top">Mockito</a>&#8201;&#8212;&#8201;A Java mocking framework.</li><li class="listitem"><a class="link" href="https://github.com/skyscreamer/JSONassert" target="_top">JSONassert</a>&#8201;&#8212;&#8201;An assertion library for JSON.</li><li class="listitem"><a class="link" href="https://github.com/jayway/JsonPath" target="_top">JsonPath</a>&#8201;&#8212;&#8201;XPath for JSON.</li></ul></div><p>These are common libraries that we generally find useful when writing tests. You are free
 to add additional test dependencies of your own if these don&#8217;t suit your needs.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="boot-features-testing-spring-applications" href="#boot-features-testing-spring-applications"></a>43.2&nbsp;Testing Spring applications</h2></div></div></div><p>One of the major advantages of dependency injection is that it should make your code
 easier to unit test. You can simply instantiate objects using the <code class="literal">new</code> operator without
@@ -16,7 +16,7 @@ to perform integration testing without requiring deployment of your application 
 needing to connect to other infrastructure.</p><p>The Spring Framework includes a dedicated test module for just such integration testing.
 You can declare a dependency directly to <code class="literal">org.springframework:spring-test</code> or use the
 <code class="literal">spring-boot-starter-test</code> &#8216;Starter&#8217; to pull it in transitively.</p><p>If you have not used the <code class="literal">spring-test</code> module before you should start by reading the
-<a class="link" href="http://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/testing.html#testing" target="_top">relevant section</a> of the Spring Framework reference
+<a class="link" href="http://docs.spring.io/spring/docs/5.0.1.BUILD-SNAPSHOT/spring-framework-reference/testing.html#testing" target="_top">relevant section</a> of the Spring Framework reference
 documentation.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="boot-features-testing-spring-boot-applications" href="#boot-features-testing-spring-boot-applications"></a>43.3&nbsp;Testing Spring Boot applications</h2></div></div></div><p>A Spring Boot application is just a Spring <code class="literal">ApplicationContext</code>, so nothing very special
 has to be done to test it beyond what you would normally do with a vanilla Spring context.
 One thing to watch out for though is that the external properties, logging and other
@@ -35,9 +35,10 @@ port.</li><li class="listitem"><code class="literal">DEFINED_PORT</code>&#8201;&
 servlet environment. Embedded servlet containers are started and listening on a defined
 port (i.e from your <code class="literal">application.properties</code> or on the default port <code class="literal">8080</code>).</li><li class="listitem"><code class="literal">NONE</code>&#8201;&#8212;&#8201;Loads an <code class="literal">ApplicationContext</code> using <code class="literal">SpringApplication</code> but does not provide
 <span class="emphasis"><em>any</em></span> servlet environment (mock or otherwise).</li></ul></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>If your test is <code class="literal">@Transactional</code>, it will rollback the transaction at the end of
-each test method by default. If you&#8217;re using this arrangement in combination with either
-<code class="literal">RANDOM_PORT</code> or <code class="literal">DEFINED_PORT</code>, any transaction initiated on the server won&#8217;t rollback as
-the test is running in a different thread than the server processing.</p></td></tr></table></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>In addition to <code class="literal">@SpringBootTest</code> a number of other annotations are also
+each test method by default. However, as using this arrangement with either <code class="literal">RANDOM_PORT</code>
+or <code class="literal">DEFINED_PORT</code> implicitly provides a real servlet environment, HTTP client and
+server will run in separate threads, thus separate transactions. Any transaction
+initiated on the server won&#8217;t rollback in this case.</p></td></tr></table></div><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>In addition to <code class="literal">@SpringBootTest</code> a number of other annotations are also
 provided for testing more specific slices of an application. See below for details.</p></td></tr></table></div><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>Don&#8217;t forget to also add <code class="literal">@RunWith(SpringRunner.class)</code> to your test, otherwise
 the annotations will be ignored.</p></td></tr></table></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-testing-spring-boot-applications-detecting-config" href="#boot-features-testing-spring-boot-applications-detecting-config"></a>43.3.1&nbsp;Detecting test configuration</h3></div></div></div><p>If you&#8217;re familiar with the Spring Test Framework, you may be used to using
 <code class="literal">@ContextConfiguration(classes=&#8230;&#8203;)</code> in order to specify which Spring <code class="literal">@Configuration</code>
@@ -63,10 +64,10 @@ class explicitly where it is required:</p><pre class="programlisting"><em><span 
 <em><span class="hl-annotation" style="color: gray">@Import(MyTestsConfiguration.class)</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> MyTests {
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> exampleTest() {
-        ...
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> exampleTest() {
+		...
+	}
 
 }</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>If you directly use <code class="literal">@ComponentScan</code> (i.e. not via <code class="literal">@SpringBootApplication</code>) you
 will need to register the <code class="literal">TypeExcludeFilter</code> with it. See
@@ -124,19 +125,19 @@ implementation:</p><pre class="programlisting"><span xmlns:d="http://docbook.org
 <em><span class="hl-annotation" style="color: gray">@SpringBootTest</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> MyTests {
 
-    <em><span class="hl-annotation" style="color: gray">@MockBean</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> RemoteService remoteService;
+	<em><span class="hl-annotation" style="color: gray">@MockBean</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> RemoteService remoteService;
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> Reverser reverser;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> Reverser reverser;
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> exampleTest() {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// RemoteService has been injected into the reverser bean</span>
-        given(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.remoteService.someCall()).willReturn(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"mock"</span>);
-        String reverse = reverser.reverseSomeCall();
-        assertThat(reverse).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"kcom"</span>);
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> exampleTest() {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// RemoteService has been injected into the reverser bean</span>
+		given(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.remoteService.someCall()).willReturn(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"mock"</span>);
+		String reverse = reverser.reverseSomeCall();
+		assertThat(reverse).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"kcom"</span>);
+	}
 
 }</pre><p>Additionally you can also use <code class="literal">@SpyBean</code> to wrap any existing bean with a Mockito <code class="literal">spy</code>.
 See the Javadoc for full details.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-testing-spring-boot-applications-testing-autoconfigured-tests" href="#boot-features-testing-spring-boot-applications-testing-autoconfigured-tests"></a>43.3.5&nbsp;Auto-configured tests</h3></div></div></div><p>Spring Boot&#8217;s auto-configuration system works well for applications, but can sometimes be
@@ -153,14 +154,13 @@ exclude one of them, most <code class="literal">@&#8230;&#8203;Test</code> annot
 attribute. Alternatively, you can use <code class="literal">@ImportAutoConfiguration#exclude</code>.</p></td></tr></table></div><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>It&#8217;s also possible to use the <code class="literal">@AutoConfigure&#8230;&#8203;</code> annotations with the standard
 <code class="literal">@SpringBootTest</code> annotation. You can use this combination if you&#8217;re not interested
  in &#8216;slicing&#8217; your application but you want some of the auto-configured test beans.</p></td></tr></table></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-testing-spring-boot-applications-testing-autoconfigured-json-tests" href="#boot-features-testing-spring-boot-applications-testing-autoconfigured-json-tests"></a>43.3.6&nbsp;Auto-configured JSON tests</h3></div></div></div><p>To test that Object JSON serialization and deserialization is working as expected you can
-use the <code class="literal">@JsonTest</code> annotation. <code class="literal">@JsonTest</code> will auto-configure Jackson <code class="literal">ObjectMapper</code>,
-any <code class="literal">@JsonComponent</code> beans and any Jackson <code class="literal">Modules</code>. It also configures <code class="literal">Gson</code>
-if you happen to be using that instead of, or as well as, Jackson. If you need to
-configure elements of the auto-configuration you can use the <code class="literal">@AutoConfigureJsonTesters</code>
-annotation.</p><p>Spring Boot includes AssertJ based helpers that work with the JSONassert and JsonPath
-libraries to check that JSON is as expected. The <code class="literal">JacksonTester</code>, <code class="literal">GsonTester</code> and
-<code class="literal">BasicJsonTester</code> classes can be used for Jackson, Gson and Strings respectively. Any
-helper fields on the test class can be <code class="literal">@Autowired</code> when using <code class="literal">@JsonTest</code>.</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.*;
+use the <code class="literal">@JsonTest</code> annotation. <code class="literal">@JsonTest</code> will auto-configure the available supported
+json mapper:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">Jackson <code class="literal">ObjectMapper</code>, any <code class="literal">@JsonComponent</code> beans and any Jackson <code class="literal">Modules</code></li><li class="listitem"><code class="literal">Gson</code></li><li class="listitem"><code class="literal">Jsonb</code></li></ul></div><p>If you need to configure elements of the auto-configuration you can use the
+<code class="literal">@AutoConfigureJsonTesters</code> annotation.</p><p>Spring Boot includes AssertJ based helpers that work with the JSONassert and JsonPath
+libraries to check that JSON is as expected. The <code class="literal">JacksonTester</code>, <code class="literal">GsonTester</code>,
+<code class="literal">JsonbTester</code> and <code class="literal">BasicJsonTester</code> classes can be used for Jackson, Gson, Jsonb and
+Strings respectively. Any helper fields on the test class can be <code class="literal">@Autowired</code> when using
+<code class="literal">@JsonTest</code>.</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.*;
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.runner.*;
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.beans.factory.annotation.*;
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.boot.test.autoconfigure.json.*;
@@ -174,27 +174,27 @@ helper fields on the test class can be <code class="literal">@Autowired</code> w
 <em><span class="hl-annotation" style="color: gray">@JsonTest</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> MyJsonTests {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> JacksonTester&lt;VehicleDetails&gt; json;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> JacksonTester&lt;VehicleDetails&gt; json;
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testSerialize() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
-        VehicleDetails details = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> VehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Civic"</span>);
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// Assert against a `.json` file in the same package as the test</span>
-        assertThat(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.json.write(details)).isEqualToJson(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"expected.json"</span>);
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// Or use JSON path based assertions</span>
-        assertThat(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.json.write(details)).hasJsonPathStringValue(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"@.make"</span>);
-        assertThat(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.json.write(details)).extractingJsonPathStringValue(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"@.make"</span>)
-                .isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda"</span>);
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testSerialize() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
+		VehicleDetails details = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> VehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Civic"</span>);
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// Assert against a `.json` file in the same package as the test</span>
+		assertThat(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.json.write(details)).isEqualToJson(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"expected.json"</span>);
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// Or use JSON path based assertions</span>
+		assertThat(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.json.write(details)).hasJsonPathStringValue(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"@.make"</span>);
+		assertThat(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.json.write(details)).extractingJsonPathStringValue(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"@.make"</span>)
+				.isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda"</span>);
+	}
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testDeserialize() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
-        String content = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"{\"make\":\"Ford\",\"model\":\"Focus\"}"</span>;
-        assertThat(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.json.parse(content))
-                .isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> VehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Ford"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Focus"</span>));
-        assertThat(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.json.parseObject(content).getMake()).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Ford"</span>);
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testDeserialize() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
+		String content = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"{\"make\":\"Ford\",\"model\":\"Focus\"}"</span>;
+		assertThat(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.json.parse(content))
+				.isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> VehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Ford"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Focus"</span>));
+		assertThat(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.json.parseObject(content).getMake()).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Ford"</span>);
+	}
 
 }</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>JSON helper classes can also be used directly in standard unit tests. Simply
 call the <code class="literal">initFields</code> method of the helper in your <code class="literal">@Before</code> method if you aren&#8217;t using
@@ -221,19 +221,19 @@ by annotating it with <code class="literal">@AutoConfigureMockMvc</code>.</p></t
 <em><span class="hl-annotation" style="color: gray">@WebMvcTest(UserVehicleController.class)</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> MyControllerTests {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> MockMvc mvc;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> MockMvc mvc;
 
-    <em><span class="hl-annotation" style="color: gray">@MockBean</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> UserVehicleService userVehicleService;
+	<em><span class="hl-annotation" style="color: gray">@MockBean</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> UserVehicleService userVehicleService;
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testExample() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
-        given(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.userVehicleService.getVehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"sboot"</span>))
-                .willReturn(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> VehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Civic"</span>));
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.mvc.perform(get(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/sboot/vehicle"</span>).accept(MediaType.TEXT_PLAIN))
-                .andExpect(status().isOk()).andExpect(content().string(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda Civic"</span>));
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testExample() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
+		given(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.userVehicleService.getVehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"sboot"</span>))
+				.willReturn(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> VehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Civic"</span>));
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.mvc.perform(get(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/sboot/vehicle"</span>).accept(MediaType.TEXT_PLAIN))
+				.andExpect(status().isOk()).andExpect(content().string(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda Civic"</span>));
+	}
 
 }</pre><div class="tip" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Tip"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Tip]" src="images/tip.png"></td><th align="left">Tip</th></tr><tr><td align="left" valign="top"><p>If you need to configure elements of the auto-configuration (for example when servlet
 filters should be applied) you can use attributes in the <code class="literal">@AutoConfigureMockMvc</code>
@@ -252,19 +252,19 @@ and/or a <code class="literal">WebDriver</code> bean. Here is an example that us
 <em><span class="hl-annotation" style="color: gray">@WebMvcTest(UserVehicleController.class)</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> MyHtmlUnitTests {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> WebClient webClient;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> WebClient webClient;
 
-    <em><span class="hl-annotation" style="color: gray">@MockBean</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> UserVehicleService userVehicleService;
+	<em><span class="hl-annotation" style="color: gray">@MockBean</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> UserVehicleService userVehicleService;
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testExample() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
-        given(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.userVehicleService.getVehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"sboot"</span>))
-                .willReturn(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> VehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Civic"</span>));
-        HtmlPage page = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.webClient.getPage(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/sboot/vehicle.html"</span>);
-        assertThat(page.getBody().getTextContent()).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda Civic"</span>);
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testExample() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
+		given(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.userVehicleService.getVehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"sboot"</span>))
+				.willReturn(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> VehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Civic"</span>));
+		HtmlPage page = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.webClient.getPage(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/sboot/vehicle.html"</span>);
+		assertThat(page.getBody().getTextContent()).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda Civic"</span>);
+	}
 
 }</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>By default Spring Boot will put <code class="literal">WebDriver</code> beans in a special &#8220;scope&#8221; to ensure
 that the driver is quit after each test, and that a new instance is injected. If you don&#8217;t
@@ -290,28 +290,28 @@ test WebFlux controllers without needing to start a full HTTP server.</p><div cl
 <em><span class="hl-annotation" style="color: gray">@WebFluxTest(UserVehicleController.class)</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> MyControllerTests {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> WebTestClient webClient;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> WebTestClient webClient;
 
-    <em><span class="hl-annotation" style="color: gray">@MockBean</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> UserVehicleService userVehicleService;
+	<em><span class="hl-annotation" style="color: gray">@MockBean</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> UserVehicleService userVehicleService;
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testExample() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
-        given(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.userVehicleService.getVehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"sboot"</span>))
-                .willReturn(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> VehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Civic"</span>));
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.webClient.get().uri(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/sboot/vehicle"</span>).accept(MediaType.TEXT_PLAIN)
-                .exchange()
-                .expectStatus().isOk()
-                .expectBody(String.<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span>).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda Civic"</span>);
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testExample() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
+		given(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.userVehicleService.getVehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"sboot"</span>))
+				.willReturn(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> VehicleDetails(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Civic"</span>));
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.webClient.get().uri(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/sboot/vehicle"</span>).accept(MediaType.TEXT_PLAIN)
+				.exchange()
+				.expectStatus().isOk()
+				.expectBody(String.<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span>).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Honda Civic"</span>);
+	}
 
 }</pre><p>A list of the auto-configuration that is enabled by <code class="literal">@WebFluxTest</code> can be
 <a class="link" href="test-auto-configuration.html" title="Appendix&nbsp;D.&nbsp;Test auto-configuration annotations">found in the appendix</a>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-testing-spring-boot-applications-testing-autoconfigured-jpa-test" href="#boot-features-testing-spring-boot-applications-testing-autoconfigured-jpa-test"></a>43.3.9&nbsp;Auto-configured Data JPA tests</h3></div></div></div><p><code class="literal">@DataJpaTest</code> can be used if you want to test JPA applications. By default it will
 configure an in-memory embedded database, scan for <code class="literal">@Entity</code> classes and configure Spring
 Data JPA repositories. Regular <code class="literal">@Component</code> beans will not be loaded into the
 <code class="literal">ApplicationContext</code>.</p><p>Data JPA tests are transactional and rollback at the end of each test by default,
-see the <a class="link" href="http://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/testing.html#testcontext-tx-enabling-transactions" target="_top">relevant section</a> in the
+see the <a class="link" href="http://docs.spring.io/spring/docs/5.0.1.BUILD-SNAPSHOT/spring-framework-reference/testing.html#testcontext-tx-enabling-transactions" target="_top">relevant section</a> in the
 Spring Reference Documentation for more details. If that&#8217;s not what you want, you can
 disable transaction management for a test or for the whole class as follows:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.Test;
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.runner.RunWith;
@@ -326,7 +326,7 @@ disable transaction management for a test or for the whole class as follows:</p>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> ExampleNonTransactionalTests {
 
 }</pre><p>Data JPA tests may also inject a
-<a class="link" href="https://github.com/spring-projects/spring-boot/tree/master/spring-boot-test-autoconfigure/src/main/java/org/springframework/boot/test/autoconfigure/orm/jpa/TestEntityManager.java" target="_top"><code class="literal">TestEntityManager</code></a>
+<a class="link" href="https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-test-autoconfigure/src/main/java/org/springframework/boot/test/autoconfigure/orm/jpa/TestEntityManager.java" target="_top"><code class="literal">TestEntityManager</code></a>
 bean which provides an alternative to the standard JPA <code class="literal">EntityManager</code> specifically
 designed for tests. If you want to use <code class="literal">TestEntityManager</code> outside of <code class="literal">@DataJpaTests</code> you
 can also use the <code class="literal">@AutoConfigureTestEntityManager</code> annotation. A <code class="literal">JdbcTemplate</code> is also
@@ -340,19 +340,19 @@ available if you need that.</p><pre class="programlisting"><span xmlns:d="http:/
 <em><span class="hl-annotation" style="color: gray">@DataJpaTest</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> ExampleRepositoryTests {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> TestEntityManager entityManager;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> TestEntityManager entityManager;
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> UserRepository repository;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> UserRepository repository;
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testExample() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.entityManager.persist(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> User(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"sboot"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"1234"</span>));
-        User user = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.repository.findByUsername(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"sboot"</span>);
-        assertThat(user.getUsername()).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"sboot"</span>);
-        assertThat(user.getVin()).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"1234"</span>);
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testExample() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.entityManager.persist(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> User(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"sboot"</span>, <span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"1234"</span>));
+		User user = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.repository.findByUsername(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"sboot"</span>);
+		assertThat(user.getUsername()).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"sboot"</span>);
+		assertThat(user.getVin()).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"1234"</span>);
+	}
 
 }</pre><p>In-memory embedded databases generally work well for tests since they are fast and don&#8217;t
 require any developer installation. If, however, you prefer to run tests against a real
@@ -361,13 +361,13 @@ database you can use the <code class="literal">@AutoConfigureTestDatabase</code>
 <em><span class="hl-annotation" style="color: gray">@AutoConfigureTestDatabase(replace=Replace.NONE)</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> ExampleRepositoryTests {
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// ...</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">// ...</span>
 
 }</pre><p>A list of the auto-configuration that is enabled by <code class="literal">@DataJpaTest</code> can be
 <a class="link" href="test-auto-configuration.html" title="Appendix&nbsp;D.&nbsp;Test auto-configuration annotations">found in the appendix</a>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-testing-spring-boot-applications-testing-autoconfigured-jdbc-test" href="#boot-features-testing-spring-boot-applications-testing-autoconfigured-jdbc-test"></a>43.3.10&nbsp;Auto-configured JDBC tests</h3></div></div></div><p><code class="literal">@JdbcTest</code> is similar to <code class="literal">@DataJpaTest</code> but for pure jdbc-related tests. By default it
 will also configure an in-memory embedded database and a <code class="literal">JdbcTemplate</code>. Regular
 <code class="literal">@Component</code> beans will not be loaded into the <code class="literal">ApplicationContext</code>.</p><p>JDBC tests are transactional and rollback at the end of each test by default,
-see the <a class="link" href="http://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/testing.html#testcontext-tx-enabling-transactions" target="_top">relevant section</a> in the
+see the <a class="link" href="http://docs.spring.io/spring/docs/5.0.1.BUILD-SNAPSHOT/spring-framework-reference/testing.html#testcontext-tx-enabling-transactions" target="_top">relevant section</a> in the
 Spring Reference Documentation for more details. If that&#8217;s not what you want, you can
 disable transaction management for a test or for the whole class as follows:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.Test;
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.runner.RunWith;
@@ -397,8 +397,8 @@ into the <code class="literal">ApplicationContext</code>:</p><pre class="program
 <em><span class="hl-annotation" style="color: gray">@JooqTest</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> ExampleJooqTests {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> DSLContext dslContext;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> DSLContext dslContext;
 }</pre><p>JOOQ tests are transactional and rollback at the end of each test by default. If that&#8217;s
 not what you want, you can disable transaction management for a test or for the whole test
 class as <a class="link" href="boot-features-testing.html#boot-features-testing-spring-boot-applications-testing-autoconfigured-jdbc-test" title="43.3.10&nbsp;Auto-configured JDBC tests">shown
@@ -416,14 +416,14 @@ for <code class="literal">@Document</code> classes and configure Spring Data Mon
 <em><span class="hl-annotation" style="color: gray">@DataMongoTest</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> ExampleDataMongoTests {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> MongoTemplate mongoTemplate;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> MongoTemplate mongoTemplate;
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">//</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">//</span>
 }</pre><p>In-memory embedded MongoDB generally works well for tests since it is fast and doesn&#8217;t
 require any developer installation. If, however, you prefer to run tests against a real
 MongoDB server you should exclude the embedded MongoDB auto-configuration:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.runner.RunWith;
-<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration;
+   <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration;
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.test.context.junit4.SpringRunner;
 
@@ -444,12 +444,12 @@ beans will not be loaded into the <code class="literal">ApplicationContext</code
 <em><span class="hl-annotation" style="color: gray">@DataNeo4jTest</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> ExampleDataNeo4jTests {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> YourRepository repository;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> YourRepository repository;
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">//</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">//</span>
 }</pre><p>Data Neo4j tests are transactional and rollback at the end of each test by default,
-see the <a class="link" href="http://docs.spring.io/spring/docs/5.0.0.BUILD-SNAPSHOT/spring-framework-reference/testing.html#testcontext-tx-enabling-transactions" target="_top">relevant section</a> in the
+see the <a class="link" href="http://docs.spring.io/spring/docs/5.0.1.BUILD-SNAPSHOT/spring-framework-reference/testing.html#testcontext-tx-enabling-transactions" target="_top">relevant section</a> in the
 Spring Reference Documentation for more details. If that&#8217;s not what you want, you can
 disable transaction management for a test or for the whole class as follows:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.Test;
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.runner.RunWith;
@@ -475,10 +475,10 @@ scan for <code class="literal">@RedisHash</code> classes and configure Spring Da
 <em><span class="hl-annotation" style="color: gray">@DataRedisTest</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> ExampleDataRedisTests {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> YourRepository repository;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> YourRepository repository;
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">//</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">//</span>
 }</pre><p>A list of the auto-configuration that is enabled by <code class="literal">@DataRedisTest</code> can be
 <a class="link" href="test-auto-configuration.html" title="Appendix&nbsp;D.&nbsp;Test auto-configuration annotations">found in the appendix</a>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-testing-spring-boot-applications-testing-autoconfigured-ldap-test" href="#boot-features-testing-spring-boot-applications-testing-autoconfigured-ldap-test"></a>43.3.15&nbsp;Auto-configured Data LDAP tests</h3></div></div></div><p><code class="literal">@DataLdapTest</code> can be used if you want to test LDAP applications. By default, it will
 configure an in-memory embedded LDAP (if available), a <code class="literal">LdapTemplate</code>, scan for <code class="literal">@Entry</code>
@@ -493,14 +493,14 @@ be loaded into the <code class="literal">ApplicationContext</code>:</p><pre clas
 <em><span class="hl-annotation" style="color: gray">@DataLdapTest</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> ExampleDataLdapTests {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> LdapTemplate ldapTemplate;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> LdapTemplate ldapTemplate;
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">//</span>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-comment">//</span>
 }</pre><p>In-memory embedded LDAP generally works well for tests since it is fast and doesn&#8217;t
 require any developer installation. If, however, you prefer to run tests against a real
 LDAP server you should exclude the embedded LDAP auto-configuration:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.runner.RunWith;
-<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.boot.autoconfigure.ldap.embedded.EmbeddedLdapAutoConfiguration;
+   <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.boot.autoconfigure.ldap.embedded.EmbeddedLdapAutoConfiguration;
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.boot.test.autoconfigure.data.ldap.DataLdapTest;
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.test.context.junit4.SpringRunner;
 
@@ -510,31 +510,36 @@ LDAP server you should exclude the embedded LDAP auto-configuration:</p><pre cla
 
 }</pre><p>A list of the auto-configuration that is enabled by <code class="literal">@DataLdapTest</code> can be
 <a class="link" href="test-auto-configuration.html" title="Appendix&nbsp;D.&nbsp;Test auto-configuration annotations">found in the appendix</a>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-testing-spring-boot-applications-testing-autoconfigured-rest-client" href="#boot-features-testing-spring-boot-applications-testing-autoconfigured-rest-client"></a>43.3.16&nbsp;Auto-configured REST clients</h3></div></div></div><p>The <code class="literal">@RestClientTest</code> annotation can be used if you want to test REST clients. By default
-it will auto-configure Jackson and GSON support, configure a <code class="literal">RestTemplateBuilder</code> and
-add support for <code class="literal">MockRestServiceServer</code>. The specific beans that you want to test should
-be specified using <code class="literal">value</code> or <code class="literal">components</code> attribute of <code class="literal">@RestClientTest</code>:</p><pre class="programlisting"><em><span class="hl-annotation" style="color: gray">@RunWith(SpringRunner.class)</span></em>
+it will auto-configure Jackson, GSON and Jsonb support, configure a <code class="literal">RestTemplateBuilder</code>
+and add support for <code class="literal">MockRestServiceServer</code>. The specific beans that you want to test
+should be specified using <code class="literal">value</code> or <code class="literal">components</code> attribute of <code class="literal">@RestClientTest</code>:</p><pre class="programlisting"><em><span class="hl-annotation" style="color: gray">@RunWith(SpringRunner.class)</span></em>
 <em><span class="hl-annotation" style="color: gray">@RestClientTest(RemoteVehicleDetailsService.class)</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> ExampleRestClientTest {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> RemoteVehicleDetailsService service;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> RemoteVehicleDetailsService service;
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> MockRestServiceServer server;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> MockRestServiceServer server;
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> getVehicleDetailsWhenResultIsSuccessShouldReturnDetails()
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.server.expect(requestTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/greet/details"</span>))
-                .andRespond(withSuccess(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"hello"</span>, MediaType.TEXT_PLAIN));
-        String greeting = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.service.callRestService();
-        assertThat(greeting).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"hello"</span>);
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> getVehicleDetailsWhenResultIsSuccessShouldReturnDetails()
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.server.expect(requestTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/greet/details"</span>))
+				.andRespond(withSuccess(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"hello"</span>, MediaType.TEXT_PLAIN));
+		String greeting = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.service.callRestService();
+		assertThat(greeting).isEqualTo(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"hello"</span>);
+	}
 
 }</pre><p>A list of the auto-configuration that is enabled by <code class="literal">@RestClientTest</code> can be
 <a class="link" href="test-auto-configuration.html" title="Appendix&nbsp;D.&nbsp;Test auto-configuration annotations">found in the appendix</a>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-testing-spring-boot-applications-testing-autoconfigured-rest-docs" href="#boot-features-testing-spring-boot-applications-testing-autoconfigured-rest-docs"></a>43.3.17&nbsp;Auto-configured Spring REST Docs tests</h3></div></div></div><p>The <code class="literal">@AutoConfigureRestDocs</code> annotation can be used if you want to use Spring REST Docs
-in your tests. It will automatically configure <code class="literal">MockMvc</code> to use Spring REST Docs and
-remove the need for Spring REST Docs' JUnit rule.</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.Test;
+in your tests with Mock MVC or REST Assured. It removes the need for Spring REST Docs'
+JUnit rule.</p><p><code class="literal">@AutoConfigureRestDocs</code> can be used to override the default output directory
+(<code class="literal">target/generated-snippets</code> if you are using Maven or <code class="literal">build/generated-snippets</code> if you
+are using Gradle). It can also be used to configure the host, scheme, and port that will
+appear in any documented URIs.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="boot-features-testing-spring-boot-applications-testing-autoconfigured-rest-docs-mock-mvc" href="#boot-features-testing-spring-boot-applications-testing-autoconfigured-rest-docs-mock-mvc"></a>Auto-configured Spring REST Docs tests with Mock MVC</h4></div></div></div><p><code class="literal">@AutoConfigureRestDocs</code> customizes the <code class="literal">MockMvc</code> bean to use Spring REST Docs, Inject it
+using <code class="literal">@Autowired</code> and use it in your tests as you normally would when using Mock MVC and
+Spring REST Docs:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.Test;
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.runner.RunWith;
 
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
@@ -552,28 +557,26 @@ remove the need for Spring REST Docs' JUnit rule.</p><pre class="programlisting"
 <em><span class="hl-annotation" style="color: gray">@AutoConfigureRestDocs</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> UserDocumentationTests {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> MockMvc mvc;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> MockMvc mvc;
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> listUsers() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.mvc.perform(get(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/users"</span>).accept(MediaType.TEXT_PLAIN))
-                .andExpect(status().isOk())
-                .andDo(document(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"list-users"</span>));
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> listUsers() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.mvc.perform(get(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/users"</span>).accept(MediaType.TEXT_PLAIN))
+				.andExpect(status().isOk())
+				.andDo(document(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"list-users"</span>));
+	}
 
-}</pre><p><code class="literal">@AutoConfigureRestDocs</code> can be used to override the default output directory
-(<code class="literal">target/generated-snippets</code> if you are using Maven or <code class="literal">build/generated-snippets</code> if you
-are using Gradle). It can also be used to configure the host, scheme, and port that will
-appear in any documented URIs. If you require more control over Spring REST Docs'
-configuration a <code class="literal">RestDocsMockMvcConfigurationCustomizer</code> bean can be used:</p><pre class="programlisting"><em><span class="hl-annotation" style="color: gray">@TestConfiguration</span></em>
+}</pre><p>If you require more control over Spring REST Docs' configuration than offered by the
+attributes of <code class="literal">@AutoConfigureRestDocs</code>, a <code class="literal">RestDocsMockMvcConfigurationCustomizer</code> bean
+can be used:</p><pre class="programlisting"><em><span class="hl-annotation" style="color: gray">@TestConfiguration</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">static</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> CustomizationConfiguration
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">implements</span> RestDocsMockMvcConfigurationCustomizer {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">implements</span> RestDocsMockMvcConfigurationCustomizer {
 
-    <em><span class="hl-annotation" style="color: gray">@Override</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> customize(MockMvcRestDocumentationConfigurer configurer) {
-        configurer.snippets().withTemplateFormat(TemplateFormats.markdown());
-    }
+	<em><span class="hl-annotation" style="color: gray">@Override</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> customize(MockMvcRestDocumentationConfigurer configurer) {
+		configurer.snippets().withTemplateFormat(TemplateFormats.markdown());
+	}
 
 }</pre><p>If you want to make use of Spring REST Docs' support for a parameterized output directory,
 you can create a <code class="literal">RestDocumentationResultHandler</code> bean. The auto-configuration will
@@ -581,12 +584,57 @@ call <code class="literal">alwaysDo</code> with this result handler, thereby cau
 automatically generate the default snippets:</p><pre class="programlisting"><em><span class="hl-annotation" style="color: gray">@TestConfiguration</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">static</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> ResultHandlerConfiguration {
 
-    <em><span class="hl-annotation" style="color: gray">@Bean</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> RestDocumentationResultHandler restDocumentation() {
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">return</span> MockMvcRestDocumentation.document(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"{method-name}"</span>);
-    }
+	<em><span class="hl-annotation" style="color: gray">@Bean</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> RestDocumentationResultHandler restDocumentation() {
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">return</span> MockMvcRestDocumentation.document(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"{method-name}"</span>);
+	}
 
-}</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-testing-spring-boot-applications-with-spock" href="#boot-features-testing-spring-boot-applications-with-spock"></a>43.3.18&nbsp;Using Spock to test Spring Boot applications</h3></div></div></div><p>If you wish to use Spock to test a Spring Boot application you should add a dependency
+}</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a name="boot-features-testing-spring-boot-applications-testing-autoconfigured-rest-docs-rest-assured" href="#boot-features-testing-spring-boot-applications-testing-autoconfigured-rest-docs-rest-assured"></a>Auto-configured Spring REST Docs tests with REST Assured</h4></div></div></div><p><code class="literal">@AutoConfigureRestDocs</code> makes a <code class="literal">RequestSpecification</code> bean, preconfigured to use Spring REST
+Docs, available to your tests. Inject it using <code class="literal">@Autowired</code> and use it in your tests as you
+normally would when using REST Assured and Spring REST Docs:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> io.restassured.specification.RequestSpecification;
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.Test;
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.junit.runner.RunWith;
+
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.beans.factory.annotation.Autowired;
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.boot.test.context.SpringBootTest;
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.boot.web.server.LocalServerPort;
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> org.springframework.test.context.junit4.SpringRunner;
+
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">static</span> io.restassured.RestAssured.given;
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">static</span> org.hamcrest.CoreMatchers.is;
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">import</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">static</span> org.springframework.restdocs.restassured3.RestAssuredRestDocumentation.document;
+
+<em><span class="hl-annotation" style="color: gray">@RunWith(SpringRunner.class)</span></em>
+<em><span class="hl-annotation" style="color: gray">@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)</span></em>
+<em><span class="hl-annotation" style="color: gray">@AutoConfigureRestDocs</span></em>
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> UserDocumentationTests {
+
+	<em><span class="hl-annotation" style="color: gray">@LocalServerPort</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">int</span> port;
+
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> RequestSpecification documentationSpec;
+
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> listUsers() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
+		given(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.documentationSpec).filter(document(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"list-users"</span>)).when()
+				.port(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">this</span>.port).get(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/"</span>).then().assertThat().statusCode(is(<span class="hl-number">200</span>));
+	}
+
+}</pre><p>If you require more control over Spring REST Docs' configuration than offered by the
+attributes of <code class="literal">@AutoConfigureRestDocs</code>, a <code class="literal">RestDocsRestAssuredConfigurationCustomizer</code>
+bean can be used:</p><pre class="programlisting"><em><span class="hl-annotation" style="color: gray">@TestConfiguration</span></em>
+<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">static</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> CustomizationConfiguration
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">implements</span> RestDocsRestAssuredConfigurationCustomizer {
+
+	<em><span class="hl-annotation" style="color: gray">@Override</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> customize(RestAssuredRestDocumentationConfigurer configurer) {
+		configurer.snippets().withTemplateFormat(TemplateFormats.markdown());
+	}
+
+}</pre></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-testing-spring-boot-applications-with-spock" href="#boot-features-testing-spring-boot-applications-with-spock"></a>43.3.18&nbsp;Using Spock to test Spring Boot applications</h3></div></div></div><p>If you wish to use Spock to test a Spring Boot application you should add a dependency
 on Spock&#8217;s <code class="literal">spock-spring</code> module to your application&#8217;s build. <code class="literal">spock-spring</code> integrates
 Spring&#8217;s test framework into Spock. It is recommended that you use Spock 1.1 or later to
 benefit from a number of recent improvements to Spock&#8217;s Spring Framework and Spring Boot
@@ -595,7 +643,7 @@ documentation for Spock&#8217;s Spring module</a> for further details.</p></div>
 useful when testing your application.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-configfileapplicationcontextinitializer-test-utility" href="#boot-features-configfileapplicationcontextinitializer-test-utility"></a>43.4.1&nbsp;ConfigFileApplicationContextInitializer</h3></div></div></div><p><code class="literal">ConfigFileApplicationContextInitializer</code> is an <code class="literal">ApplicationContextInitializer</code> that
 can apply to your tests to load Spring Boot <code class="literal">application.properties</code> files. You can use
 this when you don&#8217;t need the full features provided by <code class="literal">@SpringBootTest</code>.</p><pre class="programlisting">@ContextConfiguration(classes = Config.<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span>,
-    initializers = ConfigFileApplicationContextInitializer.<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span>)</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Using <code class="literal">ConfigFileApplicationContextInitializer</code> alone won&#8217;t provide support for
+	initializers = ConfigFileApplicationContextInitializer.<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span>)</pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><table border="0" summary="Note"><tr><td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="images/note.png"></td><th align="left">Note</th></tr><tr><td align="left" valign="top"><p>Using <code class="literal">ConfigFileApplicationContextInitializer</code> alone won&#8217;t provide support for
 <code class="literal">@Value("${&#8230;&#8203;}")</code> injection. Its only job is to ensure that <code class="literal">application.properties</code> files
 are loaded into Spring&#8217;s <code class="literal">Environment</code>. For <code class="literal">@Value</code> support you need to either
 additionally configure a <code class="literal">PropertySourcesPlaceholderConfigurer</code> or use <code class="literal">@SpringBootTest</code>
@@ -612,14 +660,14 @@ for assertions:</p><pre class="programlisting"><span xmlns:d="http://docbook.org
 
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> MyTest {
 
-    <em><span class="hl-annotation" style="color: gray">@Rule</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> OutputCapture capture = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> OutputCapture();
+	<em><span class="hl-annotation" style="color: gray">@Rule</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> OutputCapture capture = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> OutputCapture();
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testName() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
-        System.out.println(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Hello World!"</span>);
-        assertThat(capture.toString(), containsString(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"World"</span>));
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testName() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
+		System.out.println(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"Hello World!"</span>);
+		assertThat(capture.toString(), containsString(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"World"</span>));
+	}
 
 }</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a name="boot-features-rest-templates-test-utility" href="#boot-features-rest-templates-test-utility"></a>43.4.4&nbsp;TestRestTemplate</h3></div></div></div><p><code class="literal">TestRestTemplate</code> is a convenience alternative to Spring&#8217;s <code class="literal">RestTemplate</code> that is useful
 in integration tests. You can get a vanilla template or one that sends Basic HTTP
@@ -630,13 +678,13 @@ if you have that on your classpath the <code class="literal">TestRestTemplate</c
 the client appropriately. If you do use Apache&#8217;s HTTP client some additional test-friendly
 features will be enabled:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">Redirects will not be followed (so you can assert the response location)</li><li class="listitem">Cookies will be ignored (so the template is stateless)</li></ul></div><p><code class="literal">TestRestTemplate</code> can be instantiated directly in your integration tests:</p><pre class="programlisting"><span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> MyTest {
 
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> TestRestTemplate template = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> TestRestTemplate();
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> TestRestTemplate template = <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> TestRestTemplate();
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testRequest() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
-        HttpHeaders headers = template.getForEntity(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"http://myhost.com/example"</span>, String.<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span>).getHeaders();
-        assertThat(headers.getLocation().toString(), containsString(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"myotherhost"</span>));
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testRequest() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
+		HttpHeaders headers = template.getForEntity(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"http://myhost.com/example"</span>, String.<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span>).getHeaders();
+		assertThat(headers.getLocation().toString(), containsString(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"myotherhost"</span>));
+	}
 
 }</pre><p>Alternatively, if you are using the <code class="literal">@SpringBootTest</code> annotation with
 <code class="literal">WebEnvironment.RANDOM_PORT</code> or <code class="literal">WebEnvironment.DEFINED_PORT</code>, you can just inject a
@@ -646,25 +694,25 @@ specify a host and port will automatically connect to the embedded server:</p><p
 <em><span class="hl-annotation" style="color: gray">@SpringBootTest</span></em>
 <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> MyTest {
 
-    <em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> TestRestTemplate template;
+	<em><span class="hl-annotation" style="color: gray">@Autowired</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">private</span> TestRestTemplate template;
 
-    <em><span class="hl-annotation" style="color: gray">@Test</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testRequest() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
-        HttpHeaders headers = template.getForEntity(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/example"</span>, String.<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span>).getHeaders();
-        assertThat(headers.getLocation().toString(), containsString(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"myotherhost"</span>));
-    }
+	<em><span class="hl-annotation" style="color: gray">@Test</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">void</span> testRequest() <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">throws</span> Exception {
+		HttpHeaders headers = template.getForEntity(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"/example"</span>, String.<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span>).getHeaders();
+		assertThat(headers.getLocation().toString(), containsString(<span xmlns:d="http://docbook.org/ns/docbook" class="hl-string">"myotherhost"</span>));
+	}
 
-    <em><span class="hl-annotation" style="color: gray">@TestConfiguration</span></em>
-    <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">static</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> Config {
+	<em><span class="hl-annotation" style="color: gray">@TestConfiguration</span></em>
+	<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">static</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">class</span> Config {
 
-        <em><span class="hl-annotation" style="color: gray">@Bean</span></em>
-        <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> RestTemplateBuilder restTemplateBuilder() {
-            <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">return</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> RestTemplateBuilder()
-                .additionalMessageConverters(...)
-                .customizers(...);
-        }
+		<em><span class="hl-annotation" style="color: gray">@Bean</span></em>
+		<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">public</span> RestTemplateBuilder restTemplateBuilder() {
+			<span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">return</span> <span xmlns:d="http://docbook.org/ns/docbook" class="hl-keyword">new</span> RestTemplateBuilder()
+				.additionalMessageConverters(...)
+				.customizers(...);
+		}
 
-    }
+	}
 
 }</pre></div></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="boot-features-jmx.html">Prev</a>&nbsp;</td><td width="20%" align="center"><a accesskey="u" href="boot-features.html">Up</a></td><td width="40%" align="right">&nbsp;<a accesskey="n" href="boot-features-websockets.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">42.&nbsp;Monitoring and management over JMX&nbsp;</td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top">&nbsp;44.&nbsp;WebSockets</td></tr></table></div></body></html>
